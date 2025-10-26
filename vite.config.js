@@ -10,13 +10,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
       '@assets': path.resolve(__dirname, './src/assets'),
-    },
+    }
   },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html')
+      },
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
@@ -26,4 +29,8 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    port: 5173,
+    strictPort: true,
+  }
 })
