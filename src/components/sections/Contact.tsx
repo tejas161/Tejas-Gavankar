@@ -9,7 +9,15 @@ import {
   FaCode
 } from 'react-icons/fa'
 
-const socialLinks = [
+interface SocialLink {
+  name: string
+  url: string
+  icon: React.ElementType
+  color: string
+  description: string
+}
+
+const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
     url: 'https://github.com/tejas161',
@@ -33,6 +41,10 @@ const socialLinks = [
   }
 ]
 
+interface ContactCardProps extends SocialLink {
+  delay: number
+}
+
 const ContactCard = ({ 
   name, 
   url, 
@@ -40,14 +52,7 @@ const ContactCard = ({
   color, 
   description,
   delay 
-}: { 
-  name: string
-  url: string
-  icon: React.ElementType
-  color: string
-  description: string
-  delay: number
-}) => {
+}: ContactCardProps) => {
   return (
     <motion.a
       href={url}
